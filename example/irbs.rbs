@@ -1,0 +1,25 @@
+# Irbs 0.1.0
+
+module ::Submodule
+end
+
+module ::Example
+end
+
+class ::Example::App
+  extend ::Submodule
+  include ::Submodule
+
+  public attr_reader x: Integer
+  public attr_accessor y: String
+  private attr_writer z: Array[untyped]
+  public def initialize: (Integer, String) -> void
+  public def foo: () -> bool
+  public def self.classmethod: () -> void
+end
+
+module ::Example::App::Hoge
+  public def self.hoge: (Integer) -> String
+  public def self.fuga: () -> bool
+end
+

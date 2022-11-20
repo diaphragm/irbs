@@ -1,0 +1,5 @@
+#!/usr/bin/env ruby
+
+require_relative '../lib/irbs'
+
+Irbs::CLI.run(ARGV)
