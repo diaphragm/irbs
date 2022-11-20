@@ -23,6 +23,8 @@ module Irbs
       RbsGenerator.new(registry.root, config).generate
     end
 
+    private
+
     # @sig () -> singleton(YARD::Registry)
     def registry
       YARD::Registry

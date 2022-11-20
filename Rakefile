@@ -29,3 +29,8 @@ task :example do
   sh 'typeprof example/app.rb example/irbs.rbs -o example/typeprof.rbs'
   sh 'steep check example'
 end
+
+desc 'Setup develop environment'
+task :setup do
+  sh 'rbs collection install'
+end

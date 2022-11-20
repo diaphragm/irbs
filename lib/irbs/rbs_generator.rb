@@ -2,25 +2,10 @@
 
 require 'forwardable'
 require 'yard'
-require_relative 'template'
-require_relative 'attribute_wrapper'
 
 module Irbs
   class RbsGenerator
     extend Forwardable
-
-    # @sig YARD::CodeObjects::NamespaceObject
-    attr_reader :obj
-    # @sig Irbs::Config
-    attr_reader :config
-    # @sig IO
-    attr_reader :stdout
-
-    # @!method instance_mixins
-    #   @sig () -> Array[YARD::CodeObjects::ModuleObject]
-    # @!method class_mixins
-    #   @sig () -> Array[YARD::CodeObjects::ModuleObject]
-    delegate %i[instance_mixins class_mixins] => :obj
 
     # @sig (YARD::CodeObjects::NamespaceObject, Irbs::Config) -> void
     def initialize(namespace_obj, config)
@@ -37,6 +22,21 @@ module Irbs
         self.class.new(_1, config).generate
       end
     end
+
+    private
+
+    # @sig YARD::CodeObjects::NamespaceObject
+    attr_reader :obj
+    # @sig Irbs::Config
+    attr_reader :config
+    # @sig IO
+    attr_reader :stdout
+
+    # @!method instance_mixins
+    #   @sig () -> Array[YARD::CodeObjects::ModuleObject]
+    # @!method class_mixins
+    #   @sig () -> Array[YARD::CodeObjects::ModuleObject]
+    delegate %i[instance_mixins class_mixins] => :obj
 
     # @sig () -> void
     def writeout

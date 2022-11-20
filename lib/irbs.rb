@@ -9,6 +9,4 @@ require_relative 'irbs/template'
 require_relative 'irbs/version'
 
 module Irbs
-  class Error < StandardError; end
-  # Your code goes here...
 end
