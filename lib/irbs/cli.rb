@@ -4,9 +4,11 @@ require 'optparse'
 
 module Irbs
   class CLI
+    # @sig String
     NO_CONSTANT_HELP_MESSAGE = 'Generate no constant signatures. ' \
       'For using TypeProf. ' \
       '(TypeProf genarate duplicate constant signature even if already exists.)'
+    private_constant :NO_CONSTANT_HELP_MESSAGE
 
     class << self
       # @sig (Array[String]) -> void

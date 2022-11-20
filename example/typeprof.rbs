@@ -15,11 +15,9 @@ module Example
   # def initialize: (Integer, String) -> void
   # def foo: () -> bool
   # def self.classmethod: () -> void
-  # attr_reader x: Integer
-  # attr_accessor y: String
-  # attr_writer z: Array[untyped]
-
-    private
-    def bar: (untyped zz) -> untyped
+  # def bar: [T] (T) -> T
+  # attr_reader xxx: Integer
+  # attr_accessor yyy: String
+  # attr_writer zzz: Array[untyped]
   end
 end

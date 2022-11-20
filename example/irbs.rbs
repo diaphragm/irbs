@@ -10,12 +10,13 @@ class ::Example::App
   extend ::Submodule
   include ::Submodule
 
-  public attr_reader x: Integer
-  public attr_accessor y: String
-  private attr_writer z: Array[untyped]
+  public attr_reader xxx: Integer
+  public attr_accessor yyy: String
+  private attr_writer zzz: Array[untyped]
   public def initialize: (Integer, String) -> void
   public def foo: () -> bool
   public def self.classmethod: () -> void
+  private def bar: [T] (T) -> T
 end
 
 module ::Example::App::Hoge

@@ -58,7 +58,7 @@ module Example
     # @sig Array[untyped]
     attr_writer :zzz
 
-    # @sig (T) -> T
+    # @sig [T] (T) -> T
     def bar(zzz)
       zzz
     end
