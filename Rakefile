@@ -15,6 +15,11 @@ RuboCop::RakeTask.new
 
 task default: %i[rubocop typecheck test]
 
+desc 'Setup develop environment'
+task :setup do
+  sh 'rbs collection install'
+end
+
 desc 'typecheck'
 task :typecheck do
   sh 'mkdir -p isig'
@@ -28,9 +33,4 @@ task :example do
   sh 'exe/irbs example/app.rb -o example/irbs.rbs --ignore-constant'
   sh 'typeprof example/app.rb example/irbs.rbs -o example/typeprof.rbs'
   sh 'steep check example'
-end
-
-desc 'Setup develop environment'
-task :setup do
-  sh 'rbs collection install'
 end
