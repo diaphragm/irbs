@@ -13,6 +13,6 @@ gems:
   # It's unnecessary if you don't use rbs as a library.
   - name: rbs
     ignore: true
-  - name: forwardable
+  - name: steep
+    ignore: true
   - name: rack
-  - name: rubygems

@@ -32,13 +32,4 @@ target :lib do
   signature 'isig'
 
   check 'lib'
-
-  library 'forwardable'
-  library 'yard'
 end
-
-# target :example do
-#   signature "isig"
-
-#   check 'example'
-# end

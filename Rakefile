@@ -13,28 +13,19 @@ require 'rubocop/rake_task'
 
 RuboCop::RakeTask.new
 
-task default: %i[test rubocop]
+task default: %i[rubocop typecheck test]
 
 desc 'typecheck'
 task :typecheck do
-  require 'fileutils'
-  require_relative 'lib/irbs'
-  require 'steep'
-  require 'steep/cli'
+  sh 'mkdir -p isig'
 
-  FileUtils.mkdir_p('isig')
-  Irbs::CLI.run(['lib/**/*.rb', '-o', 'isig/irbs.rbs'])
-  Steep::CLI.new(argv: %w[check lib], stdout: $stdout, stderr: $stderr, stdin: $stdin).run
+  sh 'exe/irbs "lib/**/*.rb" -o isig/irbs.rbs'
+  sh 'steep check lib'
 end
 
 desc 'Exapmle of usage with TypeProf and Steep'
 task :example do
-  require_relative 'lib/irbs'
-  require 'typeprof'
-  require 'steep'
-  require 'steep/cli'
-
-  Irbs::CLI.run(['example/app.rb', '-o', 'example/irbs.rbs', '--ignore-constant'])
-  TypeProf.analyze(TypeProf::CLI.parse(['example/app.rb', 'example/irbs.rbs', '-o', 'example/typeprof.rbs']))
-  Steep::CLI.new(argv: %w[check example], stdout: $stdout, stderr: $stderr, stdin: $stdin).run
+  sh 'exe/irbs example/app.rb -o example/irbs.rbs'
+  sh 'typeprof example/app.rb example/irbs.rbs -o example/typeprof.rbs'
+  sh 'steep check example'
 end
