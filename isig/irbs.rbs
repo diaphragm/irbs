@@ -1,0 +1,68 @@
+# Irbs 0.1.0
+
+module ::Irbs
+  VERSION: String
+end
+
+class ::Irbs::CLI
+  NO_CONSTANT_HELP_MESSAGE: String
+  public def self.run: (Array[String]) -> void
+  private def self.parse_opt: (Array[String]) -> Irbs::Config
+end
+
+class ::Irbs::Core
+  public attr_reader config: Irbs::Config
+  public def initialize: (Irbs::Config) -> void
+  public def generate: () -> void
+  private def registry: () -> singleton(YARD::Registry)
+end
+
+class ::Irbs::Config
+  public attr_accessor stdout: IO
+  public attr_accessor ingore_constant: bool
+  public attr_accessor paths: Array[String]
+end
+
+module ::Irbs::Template
+  public def self.meth: (YARD::CodeObjects::MethodObject) -> String
+  public def self.constant: (YARD::CodeObjects::ConstantObject) -> String
+  public def self.include: (YARD::CodeObjects::ModuleObject) -> String
+  public def self.extend: (YARD::CodeObjects::ModuleObject) -> String
+  public def self.attribute: (Irbs::AttributeWrapper) -> String
+  public def self.rbs: (YARD::Tags::Tag) -> String
+end
+
+class ::Irbs::RbsGenerator
+  extend ::Forwardable
+  private attr_reader obj: YARD::CodeObjects::NamespaceObject
+  private attr_reader config: Irbs::Config
+  private attr_reader stdout: IO
+  public def initialize: (YARD::CodeObjects::NamespaceObject, Irbs::Config) -> void
+  public def generate: () -> void
+  private def instance_mixins: () -> Array[YARD::CodeObjects::ModuleObject]
+  private def class_mixins: () -> Array[YARD::CodeObjects::ModuleObject]
+  private def writeout: () -> void
+  private def to_rbs: () -> String
+  private def namespace_definition: () -> String
+  private def raw_rbss: () -> Array[YARD::Tags::Tag]
+  private def child_namespaces: () -> Array[YARD::CodeObjects::NamespaceObject]
+  private def constants: () -> Array[YARD::CodeObjects::ConstantObject]
+  private def meths: () -> Array[YARD::CodeObjects::MethodObject]
+  private def attribute_meths: () -> Array[YARD::CodeObjects::MethodObject]
+  private def attributes: () -> Array[Irbs::AttributeWrapper]
+end
+
+class ::Irbs::AttributeWrapper
+  type attributes = Hash[(:class | :instance), Hash[Symbol, accessors]]
+  type accessors = Hash[(:read | :write), YARD::CodeObjects::MethodObject?]
+  public attr_reader scope: Symbol
+  public attr_reader name: Symbol
+  public attr_reader reader: YARD::CodeObjects::MethodObject?
+  public attr_reader writer: YARD::CodeObjects::MethodObject?
+  public def self.parse: (attributes) -> Array[Irbs::AttributeWrapper]
+  public def initialize: (Symbol, Symbol, accessors) -> void
+  public def type: () -> Symbol
+  public def visibility: () -> Symbol?
+  public def sig: () -> String?
+end
+
