@@ -8,7 +8,7 @@ end
 module Example
   class App
     HOGE: String
-    FUGA: String
+    FUGA: Integer
     extend Submodule
     include Submodule
 

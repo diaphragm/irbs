@@ -25,7 +25,7 @@ end
 
 desc 'Exapmle of usage with TypeProf and Steep'
 task :example do
-  sh 'exe/irbs example/app.rb -o example/irbs.rbs'
+  sh 'exe/irbs example/app.rb -o example/irbs.rbs --ignore-constant'
   sh 'typeprof example/app.rb example/irbs.rbs -o example/typeprof.rbs'
   sh 'steep check example'
 end

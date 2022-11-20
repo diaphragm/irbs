@@ -33,3 +33,9 @@ target :lib do
 
   check 'lib'
 end
+
+target :example do
+  signature 'example'
+
+  check 'example'
+end

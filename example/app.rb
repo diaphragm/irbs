@@ -25,8 +25,10 @@ module Example
       end
     end
 
+    # @sig String
     HOGE = 'hoge'
-    FUGA = 'fuga'
+    # @sig Integer
+    FUGA = 1
     private_constant :FUGA
 
     # @sig Integer
