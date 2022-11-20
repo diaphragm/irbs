@@ -2,7 +2,8 @@
 
 module Irbs
   # return value of `YARD::CodeObjects::NamespaceObject#attributes`
-  # @rbs type attributes = Hash[Symbol, Hash[Symbol, Hash[Symbol, YARD::CodeObjects::MethodObject?]]]
+  # @rbs type attributes = Hash[(:class | :instance), Hash[Symbol, accessors]]
+  # @rbs type accessors = Hash[(:read | :write), YARD::CodeObjects::MethodObject?]
   class AttributeWrapper
     # @sig (attributes) -> Array[Irbs::AttributeWrapper]
     def self.parse(attributes)
@@ -20,7 +21,7 @@ module Irbs
     # @sig YARD::CodeObjects::MethodObject?
     attr_reader :writer
 
-    # @sig (Symbol, Symbol, Hash[Symbol, YARD::CodeObjects::MethodObject?]) -> void
+    # @sig (Symbol, Symbol, accessors) -> void
     def initialize(scope, name, attr_meths)
       @scope = scope
       @name = name
