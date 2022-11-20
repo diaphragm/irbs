@@ -17,7 +17,9 @@ If bundler is not being used to manage dependencies, install the gem by executin
 
 Prepare ruby code with signature annotation comment
 
-```rb:example.rb
+```rb
+# example.rb
+
 module App
   # @sig (Integer) -> String
   def some_method(arg)
@@ -34,7 +36,9 @@ end
 and run `irbs example.rb -o example.rbs`,
 then rbs code will be generated
 
-```rbs:example.rbs
+```rbs
+# example.rbs
+
 module ::App
   public def some_method: (Integer) -> String
   private def some_private_method: (String) -> Integer
