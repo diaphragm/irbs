@@ -12,6 +12,7 @@ module Irbs
       @config = config
 
       YARD::Tags::Library.define_tag('Signature', :sig)
+      YARD::Tags::Library.define_tag('Raw rbs code', :rbs)
       YARD.parse(config.paths)
       YARD::Registry.load_all
     end

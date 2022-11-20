@@ -1,8 +1,10 @@
 # frozen_string_literal: true
 
 module Irbs
+  # return value of `YARD::CodeObjects::NamespaceObject#attributes`
+  # @rbs type attributes = Hash[Symbol, Hash[Symbol, Hash[Symbol, YARD::CodeObjects::MethodObject?]]]
   class AttributeWrapper
-    # @sig (Hash[Symbol, Hash[Symbol, Hash[Symbol, YARD::CodeObjects::MethodObject?]]]) -> Array[Irbs::AttributeWrapper]
+    # @sig (attributes) -> Array[Irbs::AttributeWrapper]
     def self.parse(attributes)
       attributes.map{|scope, attr_data|
         attr_data.map{|name, attr_meths| new(scope, name, attr_meths) }

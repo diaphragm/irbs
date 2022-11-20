@@ -7,6 +7,7 @@ module ::Example
 end
 
 class ::Example::App
+  type key = String | Symbol
   extend ::Submodule
   include ::Submodule
 

@@ -44,6 +44,13 @@ module Irbs
 
         "  #{visibility} attr_#{type} #{prefix}#{name}: #{sig}"
       end
+
+      # @sig (YARD::Tags::Tag) -> String
+      def rbs(tag)
+        text = tag.text
+
+        "  #{text}"
+      end
     end
   end
 end

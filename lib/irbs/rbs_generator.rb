@@ -45,9 +45,10 @@ module Irbs
     end
 
     # @sig () -> String
-    def to_rbs # rubocop:todo Metrics/AbcSize
+    def to_rbs # rubocop:todo Metrics/AbcSize, Metrics/CyclomaticComplexity
       [
         namespace_definition,
+        raw_rbss.map{ Template.rbs(_1) },
         class_mixins.map{ Template.extend(_1) },
         instance_mixins.map{ Template.include(_1) },
         config.ingore_constant ? nil : constants.map{ Template.constant(_1) },
@@ -62,10 +63,15 @@ module Irbs
       "#{obj.type} ::#{obj.path}"
     end
 
+    # @sig () -> Array[YARD::Tags::Tag]
+    def raw_rbss
+      obj.tags(:rbs)
+    end
+
     # @sig () -> Array[YARD::CodeObjects::NamespaceObject]
     def child_namespaces
       # obj.children.select{ _1.kind_of?(YARD::CodeObjects::NamespaceObject) }
-      # write without #select to pass typecheck
+      # rewrite without #select to pass typecheck
       obj.children.each.with_object([]){|child, res|
         res.push(child) if child.is_a?(YARD::CodeObjects::NamespaceObject)
       }

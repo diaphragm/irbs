@@ -6,7 +6,7 @@ module Submodule
 end
 
 module Example
-  # @return AppApp
+  # @rbs type key = String | Symbol
   class App
     include Submodule
     extend Submodule
