@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 # D = Steep::Diagnostic
 #
 # target :lib do
@@ -27,7 +29,7 @@
 # end
 
 target :lib do
-  signature "isig"
+  signature 'isig'
 
   check 'lib'
 

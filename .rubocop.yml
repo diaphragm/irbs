@@ -1,13 +1,61 @@
+---
 AllCops:
-  TargetRubyVersion: 2.6
+  NewCops: enable
 
-Style/StringLiterals:
-  Enabled: true
-  EnforcedStyle: double_quotes
+################
+## Style
+################
 
-Style/StringLiteralsInInterpolation:
-  Enabled: true
-  EnforcedStyle: double_quotes
+Style/DisableCopsWithinSourceCodeDirective:
+  AllowedCops: []
 
-Layout/LineLength:
-  Max: 120
+# ケツカンマ。行を追加したときに変更が少ないほうがいい
+Style/TrailingCommaInHashLiteral:
+  EnforcedStyleForMultiline: consistent_comma
+Style/TrailingCommaInArrayLiteral:
+  EnforcedStyleForMultiline: consistent_comma
+Style/TrailingCommaInArguments:
+  EnforcedStyleForMultiline: consistent_comma
+
+# ;より改行のほうが視認しやすい
+Style/EmptyMethod:
+  EnforcedStyle: expanded
+
+# Blockかどうかは返り値を使うかどうかで決めたい
+Style/BlockDelimiters:
+  EnforcedStyle: semantic
+
+# 内容は名前で示したい
+Style/Documentation:
+  Enabled: false
+
+################
+## Layout
+################
+
+# インデント
+Layout/ArgumentAlignment:
+  EnforcedStyle: with_fixed_indentation
+Layout/ArrayAlignment:
+  EnforcedStyle: with_fixed_indentation
+Layout/ParameterAlignment:
+  EnforcedStyle: with_fixed_indentation
+
+Layout/LineEndStringConcatenationIndentation:
+  EnforcedStyle: indented
+
+Layout/FirstHashElementIndentation:
+  EnforcedStyle: consistent
+
+Layout/MultilineMethodCallIndentation:
+  EnforcedStyle: indented
+
+# スペース
+Layout/SpaceInsideBlockBraces:
+  SpaceBeforeBlockParameters: false
+
+Layout/SpaceBeforeBlockBraces:
+  EnforcedStyle: no_space
+
+Layout/SpaceInsideHashLiteralBraces:
+  EnforcedStyle: no_space

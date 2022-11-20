@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 module Irbs
   class AttributeWrapper
     # @sig (Hash[Symbol, Hash[Symbol, Hash[Symbol, YARD::CodeObjects::MethodObject?]]]) -> Array[Irbs::AttributeWrapper]

@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require 'forwardable'
 require 'yard'
 require_relative 'template'
@@ -18,7 +20,7 @@ module Irbs
     #   @sig () -> Array[YARD::CodeObjects::ModuleObject]
     # @!method class_mixins
     #   @sig () -> Array[YARD::CodeObjects::ModuleObject]
-    delegate [:instance_mixins, :class_mixins] => :obj
+    delegate %i[instance_mixins class_mixins] => :obj
 
     # @sig (YARD::CodeObjects::NamespaceObject, Irbs::Config) -> void
     def initialize(namespace_obj, config)
@@ -43,7 +45,7 @@ module Irbs
     end
 
     # @sig () -> String
-    def to_rbs
+    def to_rbs # rubocop:todo Metrics/AbcSize
       [
         namespace_definition,
         class_mixins.map{ Template.extend(_1) },
@@ -64,8 +66,8 @@ module Irbs
     def child_namespaces
       # obj.children.select{ _1.kind_of?(YARD::CodeObjects::NamespaceObject) }
       # write without #select to pass typecheck
-      obj.children.each.with_object([]) {|child, res|
-        res.push(child) if child.kind_of?(YARD::CodeObjects::NamespaceObject)
+      obj.children.each.with_object([]){|child, res|
+        res.push(child) if child.is_a?(YARD::CodeObjects::NamespaceObject)
       }
     end
 

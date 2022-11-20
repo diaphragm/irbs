@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 module Irbs
   module Template
     class << self
@@ -6,19 +8,14 @@ module Irbs
         visibility = meth.visibility
         prefix = meth.scope == :class ? 'self.' : ''
         name = meth.name
-        sig = meth.tag(:sig).text.then{
-          if meth.reader? then "() -> #{_1}"
-          elsif meth.writer? then "(#{_1}) -> #{_1}"
-          else _1
-          end
-        }
+        sig = meth.tag(:sig).text
 
-        "  #{visibility} def #{prefix}#{meth.name}: #{sig}"
+        "  #{visibility} def #{prefix}#{name}: #{sig}"
       end
 
       # @sig (YARD::CodeObjects::ConstantObject) -> String
       def constant(constant)
-        visibility = constant.visibility
+        # visibility = constant.visibility
         name = constant.name
         sig = constant.tag(:sig).text
 

@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 module Submodule
   def submethod
   end
@@ -11,8 +13,8 @@ module Example
 
     module Hoge
       # @sig (Integer) -> String
-      def self.hoge(i)
-        i.to_s
+      def self.hoge(arg)
+        arg.to_s
       end
 
       class << self
@@ -28,18 +30,18 @@ module Example
     private_constant :FUGA
 
     # @sig Integer
-    attr_reader :x
+    attr_reader :xxx
     # @sig String
-    attr_accessor :y
+    attr_accessor :yyy
 
     class << self
-      attr_reader :ca
+      attr_reader :class_attr
     end
 
     # @sig (Integer, String) -> void
-    def initialize(x, y)
-      @x = x
-      @y = y
+    def initialize(xxx, yyy)
+      @xxx = xxx
+      @yyy = yyy
     end
 
     # @sig () -> bool
@@ -54,10 +56,11 @@ module Example
     private
 
     # @sig Array[untyped]
-    attr_writer :z
+    attr_writer :zzz
 
-    def bar(zz)
-      return zz
+    # @sig (T) -> T
+    def bar(zzz)
+      zzz
     end
   end
 end
