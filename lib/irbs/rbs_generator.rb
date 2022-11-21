@@ -48,7 +48,7 @@ module Irbs
     def to_rbs # rubocop:todo Metrics/AbcSize
       [
         namespace_definition,
-        raw_rbss.map{ Template.rbs(_1) },
+        raw_rbses.map{ Template.rbs(_1) },
         class_mixins.map{ Template.extend(_1) },
         instance_mixins.map{ Template.include(_1) },
         config.ingore_constant ? nil : constants.map{ Template.constant(_1) },
@@ -64,7 +64,7 @@ module Irbs
     end
 
     # @sig () -> Array[YARD::Tags::Tag]
-    def raw_rbss
+    def raw_rbses
       obj.tags(:rbs)
     end
 

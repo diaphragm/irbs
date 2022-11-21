@@ -48,7 +48,7 @@ class ::Irbs::RbsGenerator
   private def writeout: () -> void
   private def to_rbs: () -> String
   private def namespace_definition: () -> String
-  private def raw_rbss: () -> Array[YARD::Tags::Tag]
+  private def raw_rbses: () -> Array[YARD::Tags::Tag]
   private def child_namespaces: () -> Array[YARD::CodeObjects::NamespaceObject]
   private def constants: () -> Array[YARD::CodeObjects::ConstantObject]
   private def meths: () -> Array[YARD::CodeObjects::MethodObject]
