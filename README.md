@@ -26,6 +26,8 @@ module App
     arg.to_s
   end
 
+  private
+
   # @sig (String) -> Integer
   def some_private_method(arg)
     arg.to_i
