@@ -22,9 +22,9 @@ end
 
 desc 'typecheck'
 task :typecheck do
-  sh 'mkdir -p isig'
+  sh 'mkdir -p sig'
 
-  sh 'exe/irbs "lib/**/*.rb" -o isig/irbs.rbs'
+  sh 'exe/irbs "lib/**/*.rb" -o sig/isig.rbs'
   sh 'steep check lib'
 end
 

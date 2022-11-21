@@ -50,7 +50,7 @@ end
 See example task in [`Rakefile`](https://github.com/diaphragm/irbs/tree/master/Rakefile) and [`exmaple/`](https://github.com/diaphragm/irbs/tree/master/example) for more examples.
 
 This library uses itself for type checking.
-See typecheck task in [`Rakefile`](https://github.com/diaphragm/irbs/tree/master/Rakefile) and [`isig/irbs.rbs`](https://github.com/diaphragm/irbs/tree/master/isig/irbs.rbs)
+See typecheck task in [`Rakefile`](https://github.com/diaphragm/irbs/tree/master/Rakefile) and [`isig/irbs.rbs`](https://github.com/diaphragm/irbs/tree/master/sig/isig.rbs)
 
 ## Development
 

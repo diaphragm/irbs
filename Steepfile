@@ -29,7 +29,7 @@
 # end
 
 target :lib do
-  signature 'isig'
+  signature 'sig'
 
   check 'lib'
 end
