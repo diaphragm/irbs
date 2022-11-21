@@ -5,17 +5,18 @@ require 'optparse'
 module Irbs
   class CLI
     # @sig String
-    NO_CONSTANT_HELP_MESSAGE = 'Generate no constant signatures. ' \
+    IGNORE_CONSTANT_HELP_MESSAGE = 'Generate no constant signatures. ' \
       'For using TypeProf. ' \
       '(TypeProf genarate duplicate constant signature even if already exists.)'
-    private_constant :NO_CONSTANT_HELP_MESSAGE
+    private_constant :IGNORE_CONSTANT_HELP_MESSAGE
 
     class << self
       # @sig (Array[String]) -> void
       def run(argv)
         config = parse_opt(argv)
         Core.new(config).generate
-        config.stdout.close
+      ensure
+        config&.stdout&.close
       end
 
       private
@@ -25,10 +26,10 @@ module Irbs
         config = Irbs::Config.new
         opt = OptionParser.new
 
-        opt.on('-o output', 'default: stdout') do
+        opt.on('-o output', 'Output filename. (Default: stdout)') do
           config.stdout = File.open(_1, 'w')
         end
-        opt.on('--ignore-constant', NO_CONSTANT_HELP_MESSAGE) do
+        opt.on('--ignore-constant', IGNORE_CONSTANT_HELP_MESSAGE) do
           config.ingore_constant = _1
         end
         config.paths = opt.parse(argv)
