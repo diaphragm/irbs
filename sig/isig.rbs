@@ -5,7 +5,7 @@ module ::Irbs
 end
 
 class ::Irbs::CLI
-  NO_CONSTANT_HELP_MESSAGE: String
+  IGNORE_CONSTANT_HELP_MESSAGE: String
   public def self.run: (Array[String]) -> void
   private def self.parse_opt: (Array[String]) -> Irbs::Config
 end

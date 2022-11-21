@@ -45,7 +45,7 @@ module Irbs
     end
 
     # @sig () -> String
-    def to_rbs # rubocop:todo Metrics/AbcSize, Metrics/CyclomaticComplexity
+    def to_rbs # rubocop:todo Metrics/AbcSize
       [
         namespace_definition,
         raw_rbss.map{ Template.rbs(_1) },

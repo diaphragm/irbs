@@ -25,6 +25,10 @@ Style/EmptyMethod:
 Style/BlockDelimiters:
   EnforcedStyle: semantic
 
+# ↑と相性が悪い
+Style/NumberedParameters:
+  Enabled: false
+
 # 内容は名前で示したい
 Style/Documentation:
   Enabled: false
