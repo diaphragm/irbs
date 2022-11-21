@@ -5,6 +5,10 @@ module Submodule
   def submethod: -> nil
 end
 
+module PrependModule
+  prepend Submodule
+end
+
 module Example
   class App
     HOGE: String

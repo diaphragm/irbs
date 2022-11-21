@@ -5,6 +5,10 @@ module Submodule
   end
 end
 
+module PrependModule
+  prepend Submodule
+end
+
 module Example
   # @rbs type key = String | Symbol
   class App

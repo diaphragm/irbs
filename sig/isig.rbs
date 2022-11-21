@@ -32,6 +32,10 @@ module ::Irbs::Template
   public def self.rbs: (YARD::Tags::Tag) -> String
 end
 
+module ::Irbs::MonkeyPatch
+  def statement: () -> untyped
+end
+
 class ::Irbs::RbsGenerator
   extend ::Forwardable
   private attr_reader obj: YARD::CodeObjects::NamespaceObject

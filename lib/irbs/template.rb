@@ -24,7 +24,9 @@ module Irbs
 
       # @sig (YARD::CodeObjects::ModuleObject) -> String
       def include(mod)
-        "  include ::#{mod.path}"
+        ident = mod.instance_variable_get(:@__ident)
+
+        "  #{ident} ::#{mod.path}"
       end
 
       # @sig (YARD::CodeObjects::ModuleObject) -> String

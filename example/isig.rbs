@@ -3,6 +3,10 @@
 module ::Submodule
 end
 
+module ::PrependModule
+  prepend ::Submodule
+end
+
 module ::Example
 end
 

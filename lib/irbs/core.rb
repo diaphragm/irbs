@@ -11,9 +11,15 @@ module Irbs
     def initialize(config)
       @config = config
 
+      # YARD::Parser::SourceParser.after_parse_file do |parser|
+      #   next unless parser.file == 'example/app.rb'
+      #   $parser = parser.instance_variable_get(:@parser)
+      # end
+
       YARD::Tags::Library.define_tag('Signature', :sig)
       YARD::Tags::Library.define_tag('Raw rbs code', :rbs)
-      YARD.parse(config.paths)
+
+      YARD::Parser::SourceParser.parse(config.paths)
       YARD::Registry.load_all
     end
 
