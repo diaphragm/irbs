@@ -1,4 +1,4 @@
-# Irbs 0.1.0
+# Irbs 0.2.0
 
 module ::Irbs
   VERSION: String
