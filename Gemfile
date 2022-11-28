@@ -3,9 +3,7 @@
 source 'https://rubygems.org'
 
 # Specify your gem's dependencies in irbs.gemspec
-# gemspec
-
-gem 'yard'
+gemspec
 
 group :develepment do
   gem 'minitest', '~> 5.0'
